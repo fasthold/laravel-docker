@@ -35,5 +35,6 @@ services:
     tty: true
     volumes:
       - ./src:/var/www/html
+      - ./data/logs/apache:/var/log/apache2
     networks:
       - 'laravel-network'
