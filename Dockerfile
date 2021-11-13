@@ -14,8 +14,7 @@ RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg --with-w
 
 # update php settings
 COPY ./docker-init/php.custom.ini /usr/local/etc/php/conf.d/php.custom.ini
-COPY ./docker-init/index.php public/index.php
-#COPY src/ src
+#COPY ./docker-init/index.php public/index.php
 
 COPY ./docker-init/000-default.conf /etc/apache2/sites-enabled/000-default.conf
 
@@ -24,7 +23,6 @@ RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf && \
     service apache2 restart
 
 # install Composer
-#RUN cd /tmp && curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
 COPY --from=composer:2.0 /usr/bin/composer /usr/local/bin/composer
 
 #RUN sed -i "s/short_open_tag = Off/short_open_tag = On/" /etc/php5/apache2/php.ini
@@ -34,3 +32,4 @@ COPY --from=composer:2.0 /usr/bin/composer /usr/local/bin/composer
 # RUN composer install
 
 EXPOSE 80
+EXPOSE 443
