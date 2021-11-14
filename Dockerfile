@@ -24,12 +24,12 @@ RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf && \
 
 # install Composer
 COPY --from=composer:2.0 /usr/bin/composer /usr/local/bin/composer
-
-#RUN sed -i "s/short_open_tag = Off/short_open_tag = On/" /etc/php5/apache2/php.ini
-#RUN sed -i "s/error_reporting = .*$/error_reporting = E_ERROR | E_WARNING | E_PARSE/" /etc/php5#/apache2/php.ini
-#RUN sed -i "s/upload_max_filesize = .*$/upload_max_filesize = 100M/" /usr/local/etc/php/php.ini
+# change to aliyun mirror
+RUN composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 
 # RUN composer install
+# create a larave project
+CMD composer create-project laravel/laravel ./
 
 EXPOSE 80
 EXPOSE 443
