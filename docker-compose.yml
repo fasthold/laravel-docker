@@ -24,8 +24,9 @@ services:
   
   web:
     build:
-      context: .
+      context: ./
       dockerfile: Dockerfile
+    image: laravel-web:8.0
     container_name: '${APP_NAME}-server'
     depends_on:
       - db
