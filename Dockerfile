@@ -29,7 +29,7 @@ RUN composer config -g repo.packagist composer https://mirrors.aliyun.com/compos
 
 # RUN composer install
 # create a larave project
-CMD composer create-project laravel/laravel ./
+# CMD composer create-project laravel/laravel ./
 
 EXPOSE 80
 EXPOSE 443
