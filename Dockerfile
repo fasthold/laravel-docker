@@ -23,7 +23,7 @@ RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf && \
     service apache2 restart
 
 # install Composer
-COPY --from=composer:2.0 /usr/bin/composer /usr/local/bin/composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 # change to aliyun mirror
 RUN composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 
