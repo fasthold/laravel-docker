@@ -32,4 +32,5 @@ RUN composer config -g repo.packagist composer https://mirrors.aliyun.com/compos
 # CMD composer create-project laravel/laravel ./
 
 EXPOSE 80
-EXPOSE 443
+
+#docker run -it -d -p 8001:80 --mount type=bind,src=/mnt/hgfs/dev/xxxxx,target=/var/www/html php74-apache:latest
